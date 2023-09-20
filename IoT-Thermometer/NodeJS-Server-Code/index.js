@@ -34,14 +34,14 @@ mqttClient.on('message', function (topic, message) {
 });
 
 // Twilio setup
-const accountSid = 'ACe18fd066e6ae17447d9f3aebe78500f9';
-const authToken = '72e5f495c65d43a2dac748b59584ce88';
+const accountSid = 'insert here';
+const authToken = 'insert here';
 const twilioClient = new twilio(accountSid, authToken);
 
 // User-defined settings
 let maxTemperature = 35;
 let minTemperature = -5;
-let phoneNumber = '+13129736301';
+let phoneNumber = 'insert here';
 
 app.use(bodyParser.json());
 
