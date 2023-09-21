@@ -6,6 +6,8 @@ const mqtt = require('mqtt');
 const app = express();
 const port = 3000;
 
+let lastSentTemperature = null;
+let lastSentTime = null;
 // MQTT setup
 const mqttClient = mqtt.connect('mqtt://test.mosquitto.org');
 
@@ -17,19 +19,24 @@ mqttClient.on('connect', function () {
 mqttClient.on('message', function (topic, message) {
   const temperature = parseFloat(message.toString());
   console.log(`Received temperature: ${temperature} C`);
+  const currentTime = new Date().getTime();
 
-  if (temperature > maxTemperature) {
-    twilioClient.messages.create({
-      body: `Warning: Temperature exceeded ${maxTemperature} C`,
-      to: phoneNumber,
-      from: '+18333170469'
-    });
-  } else if (temperature < minTemperature) {
-    twilioClient.messages.create({
-      body: `Warning: Temperature dropped below ${minTemperature} C`,
-      to: phoneNumber,
-      from: '+18333170469'
-    });
+  if (lastSentTemperature !== temperature || (lastSentTime && currentTime - lastSentTime >= 60000)) {
+    if (temperature > maxTemperature) {
+      twilioClient.messages.create({
+        body: `Warning: Temperature exceeded ${maxTemperature} C`,
+        to: phoneNumber,
+        from: 'phone-here'
+      });
+    } else if (temperature < minTemperature) {
+      twilioClient.messages.create({
+        body: `Warning: Temperature dropped below ${minTemperature} C`,
+        to: phoneNumber,
+        from: 'phone-here'
+      });
+    }
+    lastSentTemperature = temperature;
+    lastSentTime = currentTime;
   }
 });
 
