@@ -1,0 +1,14 @@
+Task Name | Start Date | End Date
+---------------------------------
+Pick out our hardware   | 2023-08-30 | 2023-09-02
+Get Pico Working With Temperature Sensor on Breadboard   | 2023-09-02 | 2023-09-04
+Get Pico Connected and Publishing to MQTT   | 2023-09-04 | 2023-09-09
+Create Node.js Backend Server and Subscribe to MQTT   | 2023-09-09 | 2023-09-14
+Implement Twilio API calls for High/Low Temperatures   | 2023-09-14 | 2023-09-15
+Implement the Button and Switches in a New Form Factor   | 2023-09-15 | 2023-09-16
+Attach the LiPo Battery to the Pico   | 2023-09-16 | 2023-09-17
+Implement the React Front-end Live Graphing   | 2023-09-17 | 2023-09-18
+Create a new MQTT Topic and Virtual Button for the Pico to know when to turn On/Off Display   | 2023-09-18 | 2023-09-20
+Create Textboxes for the Editable SMS Messages| 2023-09-20 | 2023-09-23
+Create the Physical Enclosure for the Pico   | 2023-09-23 | 2023-09-24
+Test the Entire System   | 2023-09-24 | 2023-09-27
